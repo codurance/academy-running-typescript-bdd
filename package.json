@@ -1,0 +1,28 @@
+{
+  "name": "typescript-base",
+  "version": "1.0.0",
+  "description": "TypeScript base example project",
+  "main": "./build/index.js",
+  "types": "./build/index.d.ts",
+  "scripts": {
+    "start": "jest --",
+    "watch": "jest --watch --",
+    "watch-all": "jest --watchAll",
+    "test": "./node_modules/.bin/cucumber-js -p default"
+  },
+  "dependencies": {
+    "deep-equal": "^2.0.5",
+    "ts-node": "^8.10.2",
+    "tslib": "^1.7.1"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^7.0.0",
+    "@types/deep-equal": "^1.0.1",
+    "@types/jest": "^25.2.3",
+    "@types/node": "^7.10.14",
+    "jest": "^25.1.0",
+    "jest-mock-extended": "^1.0.13",
+    "ts-jest": "^25.5.1",
+    "typescript": "^2.9.2"
+  }
+}
