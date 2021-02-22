@@ -1,4 +1,4 @@
-import {Given, Then, When} from '@cucumber/cucumber'
+import {DataTable, Given, Then, When} from '@cucumber/cucumber'
 import {Account} from "../../main/account";
 
 const account = new Account();
@@ -15,6 +15,6 @@ Given('Client makes a withdrawal of {int} on {string}', function (int: number, s
 When(/^they print their bank statement$/, function () {
     account.printStatement()
 });
-Then(/^they should see$/, function () {
+Then(/^they should see$/, function (dataTable: DataTable) {
 
 });
