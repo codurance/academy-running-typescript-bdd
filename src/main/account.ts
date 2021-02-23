@@ -1,13 +1,23 @@
+export interface Printer {
+    printline(line: string): void
+}
+
 export class Account {
-    deposit(int: number): void {
-
+    private printer: Printer;
+    constructor(printer: Printer) {
+        this.printer = printer;
     }
 
-    withdraw(int: number): void {
-
+    deposit(amount: number): void {
+        //throw new Error("Not implemented yet")
     }
-
+    withdraw(amount: number): void {
+        //throw new Error("Not implemented yet")
+    }
     printStatement(): void {
-
+        //throw new Error("Not implemented yet")
     }
+
+
+
 }

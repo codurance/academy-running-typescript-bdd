@@ -8,7 +8,7 @@
     "start": "jest --",
     "watch": "jest --watch --",
     "watch-all": "jest --watchAll",
-    "test": "./node_modules/.bin/cucumber-js src/features -p default"
+    "test": "./node_modules/.bin/cucumber-js src/specs/features -p default"
   },
   "dependencies": {
     "deep-equal": "^2.0.5",
@@ -21,6 +21,7 @@
     "@types/jest": "^25.2.3",
     "@types/node": "^7.10.14",
     "jest": "^25.1.0",
+    "jest-cucumber": "^3.0.1",
     "jest-mock-extended": "^1.0.13",
     "ts-jest": "^25.5.1",
     "typescript": "^2.9.2"
