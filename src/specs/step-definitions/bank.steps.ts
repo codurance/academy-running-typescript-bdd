@@ -27,11 +27,12 @@ defineFeature(feature, test => {
         when("they print their bank statement", () => {
             account.printStatement()
         })
-        then("they should see", (dataTable: DataTable) => {
+        then("they should see", (dataTable) => {
             expect(printer.printline).toBeCalledWith("Date | Amount | Balance");
-            expect(printer.printline).toBeCalledWith("10/01/2012 | 1000 | 1000");
-            expect(printer.printline).toBeCalledWith("13/01/2012 | 2000 | 3000");
-            expect(printer.printline).toBeCalledWith("14/01/2012 | -500 | 2500");
+            dataTable.forEach((row: any) => {
+                console.log(row.Date)
+                expect(printer.printline).toBeCalledWith(`${row.Date} | ${row.Amount} | ${row.Balance}`)
+            })
         })
     })
 })
