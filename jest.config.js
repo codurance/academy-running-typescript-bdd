@@ -4,7 +4,8 @@ module.exports = {
       '^.+\\.tsx?$': 'ts-jest',
     },
     testMatch: [
-        '(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$',
+        '(/__test__/.*|(\\.|/)(test|spec))\\.tsx?$',
+        '**/*.test.ts',
         '**/*.steps.ts'
     ],
     // testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$',
