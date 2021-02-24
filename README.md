@@ -1,6 +1,6 @@
 # How to use this repo during the training
 
-1. Navigate to the repo here [https://github.com/codurance/academy-walking-1-typescript-base-jest](https://github.com/codurance/academy-walking-1-typescript-base-jest)
+1. Navigate to the repo here [https://github.com/codurance/academy-running-typescript-bdd](https://github.com/codurance/academy-running-typescript-bdd)
 2. Click the Fork button from the top right corner of the page
 3. Chose to fork the code to your personal github account
 4. You can rename the github repo to the kata name from the Settings tab. e.g. fizzbuzz-kata
