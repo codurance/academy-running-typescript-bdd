@@ -1,15 +1,23 @@
-import {DataTable} from '@cucumber/cucumber'
-import {Account, AccountConsole} from "../../main/account";
+import {Account} from "../../main/account";
 import {defineFeature, loadFeature} from "jest-cucumber";
-import {mock} from "jest-mock-extended";
+import {TransactionRepository} from "../../main/transactionRepository";
+import {mock, MockProxy} from "jest-mock-extended";
+import {StatementPrinter} from "../../main/statementPrinter";
+import {Clock} from "../../main/clock";
 
 const feature = loadFeature('./src/specs/features/bank.feature')
 
 defineFeature(feature, test => {
-    const accountConsole = mock<AccountConsole>()
+    const mockPrintline = jest.fn()
+    const printer = {
+        printline: mockPrintline
+    }
     let account: Account
     beforeEach(() => {
-        account = new Account()
+        const clock: MockProxy<Clock> = mock<Clock>()
+        const transactionRepository: TransactionRepository = new TransactionRepository(clock)
+        const statementPrinter: StatementPrinter = new StatementPrinter()
+        account = new Account(transactionRepository, statementPrinter)
     })
 
     test("Client prints statement", ({ given, and, when, then}) => {
@@ -26,10 +34,10 @@ defineFeature(feature, test => {
             account.printStatement()
         })
         then("they should see", (dataTable) => {
-            expect(accountConsole.printline).toBeCalledWith("Date | Amount | Balance");
+            expect(printer.printline).toBeCalledWith("Date | Amount | Balance");
             dataTable.forEach((row: any) => {
                 console.log(row.Date)
-                expect(accountConsole.printline).toBeCalledWith(`${row.Date} | ${row.Amount} | ${row.Balance}`)
+                expect(printer.printline).toBeCalledWith(`${row.Date} | ${row.Amount} | ${row.Balance}`)
             })
         })
     })

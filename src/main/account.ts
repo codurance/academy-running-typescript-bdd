@@ -1,9 +1,13 @@
-export interface AccountConsole {
-    printline(line: string): void
-}
+import {TransactionRepository} from "./transactionRepository";
+import {StatementPrinter} from "./statementPrinter";
 
 export class Account {
-    constructor() {
+    private transactionRepository: TransactionRepository;
+    private statementPrinter: StatementPrinter;
+
+    constructor(transactionRepository: TransactionRepository, statementPrinter: StatementPrinter) {
+        this.transactionRepository = transactionRepository;
+        this.statementPrinter = statementPrinter;
     }
 
     deposit(amount: number): void {
