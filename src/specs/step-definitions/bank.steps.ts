@@ -1,17 +1,15 @@
 import {DataTable} from '@cucumber/cucumber'
-import {Account} from "../../main/account";
+import {Account, AccountConsole} from "../../main/account";
 import {defineFeature, loadFeature} from "jest-cucumber";
+import {mock} from "jest-mock-extended";
 
 const feature = loadFeature('./src/specs/features/bank.feature')
 
 defineFeature(feature, test => {
-    const mockPrintline = jest.fn()
-    const printer = {
-        printline: mockPrintline
-    }
+    const accountConsole = mock<AccountConsole>()
     let account: Account
     beforeEach(() => {
-        account = new Account(printer)
+        account = new Account()
     })
 
     test("Client prints statement", ({ given, and, when, then}) => {
@@ -28,10 +26,10 @@ defineFeature(feature, test => {
             account.printStatement()
         })
         then("they should see", (dataTable) => {
-            expect(printer.printline).toBeCalledWith("Date | Amount | Balance");
+            expect(accountConsole.printline).toBeCalledWith("Date | Amount | Balance");
             dataTable.forEach((row: any) => {
                 console.log(row.Date)
-                expect(printer.printline).toBeCalledWith(`${row.Date} | ${row.Amount} | ${row.Balance}`)
+                expect(accountConsole.printline).toBeCalledWith(`${row.Date} | ${row.Amount} | ${row.Balance}`)
             })
         })
     })

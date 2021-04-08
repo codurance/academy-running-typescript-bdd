@@ -1,11 +1,9 @@
-export interface Printer {
+export interface AccountConsole {
     printline(line: string): void
 }
 
 export class Account {
-    private printer: Printer;
-    constructor(printer: Printer) {
-        this.printer = printer;
+    constructor() {
     }
 
     deposit(amount: number): void {
