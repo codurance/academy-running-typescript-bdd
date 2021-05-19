@@ -7,8 +7,7 @@
   "scripts": {
     "start": "jest --",
     "watch": "jest --watch --",
-    "watch-all": "jest --watchAll",
-    "test": "./node_modules/.bin/cucumber-js src/specs/features -p default"
+    "watch-all": "jest --watchAll"
   },
   "dependencies": {
     "deep-equal": "^2.0.5",
